@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { ContactListItem } from 'components/ContactListItem/ContactListItem';
 import { ContactListWraper } from './ContactList.styled';
 
-export const ContactList = ({ contacts, onDeleteContact }) => {
+export const ContactList = () => {
   return (
     <ContactListWraper>
-      <ContactListItem contacts={contacts} onDeleteContact={onDeleteContact} />
+      <ContactListItem />
     </ContactListWraper>
   );
 };
