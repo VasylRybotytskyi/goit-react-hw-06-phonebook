@@ -1,5 +1,4 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import PropTypes from 'prop-types';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contactsSlice';
@@ -15,7 +14,7 @@ export function ContactForm() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
 
-  const formSubmitHandler = values => {
+  const formSubmitHandler = (values, { resetForm }) => {
     const { name } = values;
     const existingContact = contacts.find(contact => contact.name === name);
 
@@ -26,6 +25,8 @@ export function ContactForm() {
 
     const newContact = { id: nanoid(), ...values };
     dispatch(addContact(newContact));
+
+    resetForm(); // Очистка полів форми
   };
 
   return (
@@ -48,7 +49,3 @@ export function ContactForm() {
     </>
   );
 }
-
-ContactForm.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};

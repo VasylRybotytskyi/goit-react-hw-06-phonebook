@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { FilterWrapper, FilterLabel, FilterInput } from './Filter.styled';
 import { setFilter } from 'redux/filterSlice';
 import { useDispatch, useSelector } from 'react-redux';
@@ -20,9 +19,4 @@ export const Filter = () => {
       />
     </FilterWrapper>
   );
-};
-
-Filter.propTypes = {
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired,
 };
