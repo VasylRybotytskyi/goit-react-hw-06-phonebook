@@ -1,9 +1,16 @@
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
+
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from '../../redux/contactsSlice';
 import { getContacts } from '../../redux/selectors';
 import { nanoid } from 'nanoid';
+import {
+  FormContainer,
+  FormErrorMessage,
+  FormInput,
+  SubmitButton,
+} from './ContactForm.styled';
 
 const schema = yup.object().shape({
   name: yup.string().required(),
@@ -36,15 +43,15 @@ export function ContactForm() {
         validationSchema={schema}
         onSubmit={formSubmitHandler}
       >
-        <Form>
+        <FormContainer>
           <label htmlFor="name">Name</label>
-          <Field type="text" name="name" id="name" />
-          <ErrorMessage name="name" component="span" />
+          <FormInput type="text" name="name" id="name" />
+          <FormErrorMessage name="name" component="span" />
           <label htmlFor="number">Number</label>
-          <Field type="tel" name="number" id="number" />
-          <ErrorMessage name="number" component="span" />
-          <button type="submit">Add contact</button>
-        </Form>
+          <FormInput type="tel" name="number" id="number" />
+          <FormErrorMessage name="number" component="span" />
+          <SubmitButton type="submit">Add contact</SubmitButton>
+        </FormContainer>
       </Formik>
     </>
   );
